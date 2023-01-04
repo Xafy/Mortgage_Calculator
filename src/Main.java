@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         int principal = (int) readValue("Enter Principal", 1000, 1000000);
-        float annualInterestRate = (float) readValue("Enter annual interest rate :", 3, 30)
+        float annualInterestRate = (float) readValue("Enter annual interest rate :", 3, 30);
         byte years = (byte) readValue("Enter Number of years :", 3, 30);
 
         double mortgage = calculateMortgage(principal, annualInterestRate, years);
