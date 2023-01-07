@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.text.NumberFormat;
 import java.util.Scanner;
 
@@ -15,18 +14,27 @@ public class Main {
 
         short numberOfPayments = (short)(years * MONTHS_IN_YEAR);
 
+        printMortgage(principal, annualInterestRate, years);
+
+        printPayments(principal, annualInterestRate, years, numberOfPayments);
+    }
+
+    private static void printPayments(int principal, float annualInterestRate, byte years, short numberOfPayments) {
+        short numberOfPaymentsMade;
+        System.out.println("_________");
+        System.out.println("payments");
+        for (numberOfPaymentsMade =1 ; numberOfPaymentsMade <= numberOfPayments; numberOfPaymentsMade++){
+            double balance = calculateBalance(principal, annualInterestRate, years, numberOfPaymentsMade);
+            System.out.println(balance);
+        }
+    }
+
+    private static void printMortgage(int principal, float annualInterestRate, byte years) {
         double mortgage = calculateMortgage(principal, annualInterestRate, years);
         String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);
         System.out.println();
         System.out.println("_________");
         System.out.println("The mortgage is :" + mortgageFormatted);
-
-        System.out.println("_________");
-        System.out.println("payments");
-        for (numberOfPaymentsMade =1 ; numberOfPaymentsMade <= numberOfPayments ; numberOfPaymentsMade++){
-            double balance = calculateBalance(principal, annualInterestRate, years, numberOfPaymentsMade);
-            System.out.println(balance);
-        }
     }
 
     public static  double readValue(String prompt, int min, int max){
